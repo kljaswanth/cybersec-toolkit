@@ -2,7 +2,7 @@
 
 > **Free, open-source cybersecurity templates built by [Jaswanth K L](https://www.linkedin.com/in/jaswanthkl)**
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-00C8E8?style=for-the-badge)](https://jaswanthkl.github.io/cybersec-toolkit)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-00C8E8?style=for-the-badge)](https://kljaswanth.github.io/cybersec-toolkit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![Templates](https://img.shields.io/badge/Templates-45%2B-brightgreen?style=for-the-badge)]()
 [![Domains](https://img.shields.io/badge/Domains-9-blue?style=for-the-badge)]()
@@ -10,7 +10,7 @@
 
 ---
 
-## 🔗 [→ Live Demo: jaswanthkl.github.io/cybersec-toolkit](https://jaswanthkl.github.io/cybersec-toolkit)
+## 🔗 [→ Live Demo: kljaswanth.github.io/cybersec-toolkit](https://kljaswanth.github.io/cybersec-toolkit)
 
 Click any template on the site — it opens as a **fully interactive spreadsheet** right in your browser. No login. No Excel. No cost.
 
@@ -208,7 +208,7 @@ MIT License — free to use, modify, and distribute. See [LICENSE](LICENSE) for 
 Cybersecurity professional passionate about making security operations more accessible.
 
 - 🔗 LinkedIn: [linkedin.com/in/jaswanthkl](https://www.linkedin.com/in/jaswanth-cybersec)
-- 💻 GitHub: [github.com/jaswanthkl](https://github.com/jaswanthkl)
+- 💻 GitHub: [github.com/jaswanthkl](https://github.com/kljaswanth)
 
 ---
 
