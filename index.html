@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CyberSec Toolkit by Jaswanth K L — Free Cybersecurity Templates</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#05080D; --surface:#0B1118; --card:#0F1923; --border:#1C2E40;
+  --border2:#243647; --cyan:#00C8E8; --green:#00E87A; --amber:#F5A623;
+  --red:#FF4F4F; --purple:#8B7EF8; --text:#E4F0FA; --muted:#5A7A96;
+  --dim:#2D4A62; --mono:'IBM Plex Mono',monospace; --sans:'Syne',sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(rgba(0,200,232,.05) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;z-index:0}
+
+/* ── UTILS ── */
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+.hide{display:none!important}
+.mono{font-family:var(--mono)}
+
+/* ── TOP NAV ── */
+.topnav{border-bottom:1px solid var(--border);padding:14px 0;position:sticky;top:0;background:rgba(5,8,13,.92);backdrop-filter:blur(12px);z-index:100}
+.topnav-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:14px;font-weight:600;color:var(--cyan);text-decoration:none;cursor:pointer}
+.brand-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.nav-right{display:flex;gap:8px;align-items:center}
+.nav-btn{font-family:var(--mono);font-size:11px;padding:7px 16px;border:1px solid var(--border2);color:var(--muted);background:none;cursor:pointer;transition:all .2s;text-transform:uppercase;letter-spacing:.08em}
+.nav-btn:hover{border-color:var(--cyan);color:var(--cyan)}
+.nav-btn.solid{background:var(--cyan);color:var(--bg);border-color:var(--cyan)}
+.nav-btn.solid:hover{background:var(--green);border-color:var(--green)}
+.nav-user{font-family:var(--mono);font-size:11px;color:var(--muted);display:flex;align-items:center;gap:10px}
+.nav-user strong{color:var(--cyan)}
+
+/* ── PAGES ── */
+.page{display:none;animation:fadeUp .4s ease both}
+.page.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── HERO ── */
+.hero{padding:60px 0 48px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;color:var(--cyan);letter-spacing:.18em;text-transform:uppercase;border:1px solid rgba(0,200,232,.2);padding:5px 12px;margin-bottom:24px}
+.eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--green)}
+h1.hero-title{font-size:clamp(32px,6vw,62px);font-weight:800;line-height:1.05;letter-spacing:-.025em;margin-bottom:18px}
+h1.hero-title em{font-style:normal;color:var(--cyan)}
+.hero-sub{font-family:var(--mono);font-size:13px;color:var(--muted);max-width:580px;line-height:1.85;margin-bottom:28px}
+.hero-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.pill{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--border);color:var(--muted)}
+.pill.hi{border-color:rgba(0,200,232,.3);color:var(--cyan);background:rgba(0,200,232,.05)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:13px 22px;transition:all .2s;border:none;cursor:pointer;white-space:nowrap}
+.btn-solid{background:var(--cyan);color:var(--bg);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px))}
+.btn-solid:hover{background:var(--green);box-shadow:0 6px 24px rgba(0,232,122,.25);transform:translateY(-1px)}
+.btn-ghost{border:1px solid var(--border2);color:var(--muted);background:none}
+.btn-ghost:hover{border-color:var(--cyan);color:var(--cyan)}
+
+/* ── STATS BAR ── */
+.stats-bar{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--border);margin:40px 0}
+.stat{padding:18px 16px;border-right:1px solid var(--border)}
+.stat:last-child{border-right:none}
+.stat-n{font-family:var(--mono);font-size:22px;font-weight:600;color:var(--cyan);display:block;line-height:1;margin-bottom:4px}
+.stat-l{font-family:var(--mono);font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:.12em}
+
+/* ── SECTION HEADER ── */
+.sh{display:flex;align-items:center;gap:14px;margin-bottom:24px;margin-top:48px}
+.sh-label{font-family:var(--mono);font-size:10px;color:var(--cyan);text-transform:uppercase;letter-spacing:.2em;white-space:nowrap}
+.sh-line{flex:1;height:1px;background:var(--border)}
+
+/* ── DOMAIN GRID ── */
+.domain-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.domain-card{background:var(--card);border:1px solid var(--border);transition:all .22s;position:relative;overflow:hidden}
+.domain-card::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--cyan);transform:scaleY(0);transform-origin:bottom;transition:transform .25s ease}
+.domain-card:hover{border-color:rgba(0,200,232,.3);background:#121E2A}
+.domain-card:hover::after{transform:scaleY(1)}
+.dc-head{display:flex;align-items:center;gap:12px;padding:18px 20px 14px;border-bottom:1px solid var(--border)}
+.dc-icon{width:34px;height:34px;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;background:rgba(255,255,255,.02)}
+.dc-title{font-size:13px;font-weight:700;color:var(--text)}
+.dc-badge{margin-left:auto;font-family:var(--mono);font-size:9px;color:var(--green);border:1px solid rgba(0,232,122,.2);padding:2px 8px;white-space:nowrap}
+.dc-body{padding:14px 20px}
+.dc-sub{font-family:var(--mono);font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}
+.template-btn{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(28,46,64,.6);cursor:pointer;transition:all .18s;background:none;border-left:none;border-right:none;border-top:none;width:100%;text-align:left}
+.template-btn:last-child{border-bottom:none}
+.template-btn:hover .tb-arrow{color:var(--cyan);transform:translateX(3px)}
+.template-btn:hover .tb-name{color:var(--text)}
+.tb-arrow{font-family:var(--mono);font-size:11px;color:var(--dim);transition:all .18s;flex-shrink:0}
+.tb-name{font-family:var(--mono);font-size:11px;color:var(--muted);transition:color .18s;flex:1}
+.tb-open{font-family:var(--mono);font-size:9px;color:var(--dim);border:1px solid var(--border);padding:2px 7px;flex-shrink:0;transition:all .18s}
+.template-btn:hover .tb-open{border-color:var(--cyan);color:var(--cyan)}
+
+/* ── AUTH MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);display:flex;align-items:center;justify-content:center;z-index:999;backdrop-filter:blur(4px)}
+.modal-overlay.hide{display:none!important}
+.modal{background:var(--card);border:1px solid var(--border2);padding:36px;width:100%;max-width:420px;position:relative;animation:fadeUp .3s ease both}
+.modal h2{font-size:20px;font-weight:800;margin-bottom:6px}
+.modal-sub{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:24px}
+.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--muted);cursor:pointer;font-size:18px}
+.form-group{margin-bottom:16px}
+.form-label{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:6px}
+.form-input{width:100%;background:var(--surface);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:13px;padding:11px 14px;outline:none;transition:border-color .2s}
+.form-input:focus{border-color:var(--cyan)}
+.form-error{font-family:var(--mono);font-size:11px;color:var(--red);margin-top:12px}
+.modal-switch{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:14px;text-align:center}
+.modal-switch span{color:var(--cyan);cursor:pointer;text-decoration:underline}
+
+/* ── TEMPLATE MODAL ── */
+.tpl-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);display:flex;align-items:flex-start;justify-content:center;z-index:998;overflow-y:auto;padding:20px;backdrop-filter:blur(4px)}
+.tpl-overlay.hide{display:none!important}
+.tpl-modal{background:var(--card);border:1px solid var(--border2);width:100%;max-width:1100px;margin:auto;animation:fadeUp .3s ease both;position:relative}
+.tpl-header{display:flex;align-items:center;gap:14px;padding:18px 24px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--card);z-index:10}
+.tpl-domain-badge{font-family:var(--mono);font-size:9px;color:var(--bg);background:var(--cyan);padding:3px 10px;text-transform:uppercase;letter-spacing:.1em}
+.tpl-title{font-size:15px;font-weight:700;flex:1}
+.tpl-actions{display:flex;gap:8px}
+.tpl-btn{font-family:var(--mono);font-size:10px;padding:7px 14px;border:1px solid var(--border2);color:var(--muted);background:none;cursor:pointer;transition:all .2s;text-transform:uppercase;letter-spacing:.06em;display:flex;align-items:center;gap:6px}
+.tpl-btn:hover{border-color:var(--cyan);color:var(--cyan)}
+.tpl-btn.save{border-color:rgba(0,232,122,.3);color:var(--green)}
+.tpl-btn.save:hover{background:rgba(0,232,122,.1)}
+.tpl-close{background:none;border:none;color:var(--muted);cursor:pointer;font-size:20px;padding:0 4px;line-height:1}
+
+/* ── SPREADSHEET ── */
+.tpl-body{padding:0}
+.tpl-desc{padding:14px 24px;font-family:var(--mono);font-size:11px;color:var(--muted);border-bottom:1px solid var(--border);background:rgba(0,200,232,.03);line-height:1.7}
+.tpl-notes-row{padding:10px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.tpl-notes-input{flex:1;background:transparent;border:1px solid var(--border);color:var(--muted);font-family:var(--mono);font-size:11px;padding:7px 12px;outline:none}
+.tpl-notes-input:focus{border-color:var(--cyan);color:var(--text)}
+.sheet-wrap{overflow-x:auto;padding:0}
+.sheet{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:12px}
+.sheet thead th{background:rgba(0,200,232,.08);color:var(--cyan);font-size:10px;text-transform:uppercase;letter-spacing:.1em;padding:10px 14px;border:1px solid var(--border);white-space:nowrap;font-weight:600;text-align:left;position:sticky;top:0}
+.sheet tbody tr:nth-child(even){background:rgba(255,255,255,.015)}
+.sheet tbody tr:hover{background:rgba(0,200,232,.04)}
+.sheet tbody td{padding:0;border:1px solid rgba(28,46,64,.7)}
+.sheet tbody td.row-num{padding:8px 10px;color:var(--dim);font-size:10px;background:rgba(0,0,0,.2);text-align:center;min-width:36px;cursor:default;user-select:none}
+.sheet tbody td input,.sheet tbody td select{width:100%;background:transparent;border:none;color:var(--text);font-family:var(--mono);font-size:12px;padding:8px 12px;outline:none;min-width:100px}
+.sheet tbody td input:focus,.sheet tbody td select:focus{background:rgba(0,200,232,.07);outline:1px solid var(--cyan)}
+.sheet tbody td select{cursor:pointer}
+.sheet tbody td select option{background:var(--card);color:var(--text)}
+.status-badge{display:inline-block;font-size:10px;padding:2px 8px;border-radius:2px;font-family:var(--mono)}
+.s-high,.s-critical{background:rgba(255,79,79,.15);color:#ff7070}
+.s-medium{background:rgba(245,166,35,.15);color:var(--amber)}
+.s-low{background:rgba(0,232,122,.15);color:var(--green)}
+.s-open{background:rgba(0,200,232,.15);color:var(--cyan)}
+.s-closed{background:rgba(90,122,150,.15);color:var(--muted)}
+
+/* ── DASHBOARD PAGE ── */
+.dashboard-page{padding:40px 0}
+.dash-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px}
+.dash-header h2{font-size:22px;font-weight:800}
+.dash-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px}
+.dash-card{background:var(--card);border:1px solid var(--border);padding:20px}
+.dash-card-label{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+.dash-card-value{font-family:var(--mono);font-size:28px;font-weight:600;color:var(--cyan)}
+.dash-card-sub{font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:4px}
+.saves-list{display:flex;flex-direction:column;gap:2px}
+.save-item{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--border);padding:14px 18px;cursor:pointer;transition:all .2s}
+.save-item:hover{border-color:rgba(0,200,232,.3);background:#121E2A}
+.save-icon{font-size:16px}
+.save-name{flex:1;font-size:13px;font-weight:600;color:var(--text)}
+.save-domain{font-family:var(--mono);font-size:10px;color:var(--muted)}
+.save-date{font-family:var(--mono);font-size:10px;color:var(--dim)}
+.save-del{background:none;border:none;color:var(--dim);cursor:pointer;font-size:16px;padding:0 4px;transition:color .2s}
+.save-del:hover{color:var(--red)}
+.dl-list{display:flex;flex-direction:column;gap:2px}
+.dl-item{display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--card);border:1px solid var(--border);font-family:var(--mono);font-size:11px}
+.dl-name{flex:1;color:var(--muted)}
+.dl-domain{color:var(--dim)}
+.dl-date{color:var(--dim)}
+.empty-state{font-family:var(--mono);font-size:12px;color:var(--dim);padding:24px;text-align:center;border:1px dashed var(--border)}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--card);border:1px solid var(--border2);padding:12px 20px;font-family:var(--mono);font-size:12px;color:var(--text);z-index:9999;animation:fadeUp .3s ease both;display:none}
+.toast.show{display:block}
+.toast.success{border-color:rgba(0,232,122,.4);color:var(--green)}
+.toast.error{border-color:rgba(255,79,79,.4);color:var(--red)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:680px){
+  .domain-grid{grid-template-columns:1fr}
+  .stats-bar{grid-template-columns:repeat(3,1fr)}
+  .stat:nth-child(3){border-right:none}
+  .stat:nth-child(4){border-top:1px solid var(--border)}
+  .stat:nth-child(5){border-top:1px solid var(--border);border-right:none}
+  .dash-grid-3{grid-template-columns:1fr}
+  .tpl-modal{margin:0}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="topnav">
+  <div class="wrap topnav-inner">
+    <div class="brand" onclick="showPage('home')">
+      <div class="brand-dot"></div>
+      CyberSec Toolkit
+    </div>
+    <div class="nav-right" id="nav-auth-area">
+      <span style="font-family:var(--mono);font-size:11px;color:var(--muted)">by <strong style="color:var(--cyan)">Jaswanth K L</strong></span>
+      <a href="https://github.com/jaswanthkl/cybersec-toolkit" target="_blank" class="nav-btn" style="display:flex;align-items:center;gap:7px;text-decoration:none">
+        <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        View on GitHub
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGES -->
+
+<!-- HOME PAGE -->
+<div class="page active" id="page-home">
+  <div class="wrap">
+    <div class="hero">
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Free & Open Source · No Paywall · 100% Browser-Based</div>
+      <h1 class="hero-title">
+        Visualize Risk.<br>
+        <em>Track Compliance.</em><br>
+        Make Better Decisions.
+      </h1>
+      <p class="hero-sub">
+        A free, open-source cybersecurity toolkit built by <strong style="color:var(--cyan)">Jaswanth K L</strong> — 45+ interactive templates across 9 domains. Click any template to open and use it instantly. No login, no paywall.
+      </p>
+      <div class="hero-pills">
+        <span class="pill hi">9 Domains</span>
+        <span class="pill hi">45+ Templates</span>
+        <span class="pill hi">9 Dashboards</span>
+        <span class="pill hi">Free Forever</span>
+        <span class="pill">Network Security</span>
+        <span class="pill">GRC</span>
+        <span class="pill">SOC</span>
+        <span class="pill">Cloud</span>
+        <span class="pill">Endpoint</span>
+        <span class="pill">AppSec</span>
+        <span class="pill">InfoSec</span>
+        <span class="pill">Data Security</span>
+        <span class="pill">Vuln Mgmt</span>
+      </div>
+      <div class="hero-cta">
+        <a href="https://github.com/jaswanthkl/cybersec-toolkit" target="_blank" class="btn btn-solid">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          View on GitHub
+        </a>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-bar">
+      <div class="stat"><span class="stat-n">9</span><span class="stat-l">Domains</span></div>
+      <div class="stat"><span class="stat-n">9</span><span class="stat-l">Dashboards</span></div>
+      <div class="stat"><span class="stat-n">45+</span><span class="stat-l">Templates</span></div>
+      <div class="stat"><span class="stat-n">27</span><span class="stat-l">Doc Files</span></div>
+      <div class="stat"><span class="stat-n">$0</span><span class="stat-l">Cost</span></div>
+    </div>
+
+    <!-- DOMAINS -->
+    <div class="sh"><span class="sh-label">// Security Domains & Templates</span><div class="sh-line"></div></div>
+    <div class="domain-grid" id="domain-grid"></div>
+
+    <div style="height:60px"></div>
+  </div>
+</div>
+
+<!-- DASHBOARD PAGE -->
+<div class="page" id="page-dashboard">
+  <div class="wrap dashboard-page">
+    <div class="dash-header">
+      <div>
+        <h2>My Dashboard</h2>
+        <p style="font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:4px">Your saved templates & activity</p>
+      </div>
+      <button class="btn btn-ghost" onclick="showPage('home')" style="padding:9px 16px;font-size:11px">← Back to Templates</button>
+    </div>
+
+    <div class="dash-grid-3">
+      <div class="dash-card">
+        <div class="dash-card-label">Saved Templates</div>
+        <div class="dash-card-value" id="dash-saves-count">0</div>
+        <div class="dash-card-sub">Templates with your data</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-label">Downloads</div>
+        <div class="dash-card-value" id="dash-dl-count">0</div>
+        <div class="dash-card-sub">Templates opened</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-label">Domains Explored</div>
+        <div class="dash-card-value" id="dash-domains-count">0</div>
+        <div class="dash-card-sub">Out of 9 domains</div>
+      </div>
+    </div>
+
+    <div class="sh"><span class="sh-label">// Saved Templates</span><div class="sh-line"></div></div>
+    <div class="saves-list" id="saves-list"></div>
+
+    <div class="sh"><span class="sh-label">// Recent Activity</span><div class="sh-line"></div></div>
+    <div class="dl-list" id="dl-list"></div>
+  </div>
+</div>
+
+<!-- TEMPLATE MODAL -->
+<div class="tpl-overlay hide" id="tpl-overlay">
+  <div class="tpl-modal">
+    <div class="tpl-header">
+      <div class="tpl-domain-badge" id="tpl-domain-badge">Domain</div>
+      <div class="tpl-title" id="tpl-title">Template</div>
+      <div class="tpl-actions">
+
+        <button class="tpl-btn" onclick="exportCSV()">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Export CSV
+        </button>
+        <button class="tpl-close" onclick="closeTemplate()">×</button>
+      </div>
+    </div>
+    <div class="tpl-body">
+      <div class="tpl-desc" id="tpl-desc"></div>
+      <div class="sheet-wrap">
+        <table class="sheet" id="tpl-table"></table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ─────────────────────────────────────────────
+// CONFIG
+// ─────────────────────────────────────────────
+const API = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://localhost:3001/api'
+  : '/api';
+
+let currentTemplate = null;
+let currentTemplateId = null;
+
+// ─────────────────────────────────────────────
+// TEMPLATE DATA (all 9 domains, full templates)
+// ─────────────────────────────────────────────
+const DOMAINS = [
+  {
+    id: 'network', icon: '🌐', title: 'Network Security',
+    badge: 'Dashboard + 8 tmpl',
+    templates: [
+      {
+        id: 'net-ddos', name: 'DDoS Attack Mitigation Plan Tracker',
+        desc: 'Track DDoS attack events, mitigation actions, response times, and effectiveness of countermeasures.',
+        cols: ['Incident ID','Date','Attack Type','Target IP/Range','Peak BPS','Duration (min)','Detection Method','Mitigation Tool','Action Taken','Status','Resolution Time (min)','Notes'],
+        rows: [
+          ['INC-001','2025-01-15','Volumetric','192.168.1.0/24','45 Gbps','32','SIEM Alert','Cloudflare','Rate limit + block','Resolved','28','Upstream provider notified'],
+          ['INC-002','2025-02-03','SYN Flood','10.0.0.5','12 Gbps','15','IDS Alert','Firewall ACL','SYN cookie enabled','Resolved','12','No service disruption'],
+          ['INC-003','2025-03-22','HTTP Flood','203.0.113.10','8 Gbps','60','Traffic anomaly','WAF','Bot challenge page','Ongoing','—','Monitoring closely'],
+          ['INC-004','2025-04-01','Amplification','198.51.100.0/28','90 Gbps','8','Netflow','BGP Blackhole','Null route announced','Resolved','7','ISP assisted'],
+          ['','','','','','','','','','','',''],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 9, statusMap: {Resolved:'s-low',Ongoing:'s-high',Investigating:'s-medium'}
+      },
+      {
+        id: 'net-ip', name: 'IP Whitelist-Blacklist Tracker',
+        desc: 'Maintain and audit your IP allowlist and blocklist with reason, owner, and review dates.',
+        cols: ['IP Address','Type','CIDR/Range','List Type','Reason','Owner/Team','Date Added','Review Date','Last Reviewed','Status','Ticket Ref','Notes'],
+        rows: [
+          ['203.0.113.50','Single IP','—','Blacklist','Repeated brute force','SOC Team','2025-01-10','2025-07-10','2025-04-01','Active','TKT-0041','Blocked at perimeter FW'],
+          ['10.10.20.0','CIDR','10.10.20.0/24','Whitelist','Internal dev subnet','IT Ops','2024-11-01','2025-11-01','2025-03-15','Active','TKT-0012','Allowed all ports'],
+          ['198.51.100.200','Single IP','—','Blacklist','Known C2 server','Threat Intel','2025-02-28','2025-08-28','—','Active','TKT-0057','MITRE indicator confirmed'],
+          ['192.0.2.100','Single IP','—','Whitelist','Partner API gateway','Dev Team','2025-01-20','2025-07-20','2025-04-02','Active','TKT-0029','HTTPS only'],
+          ['','','','','','','','','','','',''],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 9
+      },
+      {
+        id: 'net-nac', name: 'Network Access Control Log',
+        desc: 'Log and audit all network access control decisions, authentication events, and policy enforcement.',
+        cols: ['Log ID','Timestamp','User/Device','MAC Address','IP Assigned','Auth Method','VLAN','Policy Applied','Access Decision','Location','Risk Score','Notes'],
+        rows: [
+          ['LOG-001','2025-04-16 08:12','jsmith-laptop','AA:BB:CC:DD:EE:01','10.1.1.45','802.1X','VLAN-10 (Corp)','Corp Device Policy','Allowed','HQ Floor 2','Low','Compliant device'],
+          ['LOG-002','2025-04-16 08:45','UNKNOWN-DEVICE','FF:EE:DD:CC:BB:01','—','MAB Failed','VLAN-99 (Quarantine)','Unknown Device Policy','Quarantined','Lobby AP','High','No certificate'],
+          ['LOG-003','2025-04-16 09:30','guest-tablet-03','11:22:33:44:55:06','172.16.0.25','Guest Portal','VLAN-50 (Guest)','Guest Policy','Allowed','Conference Room 1','Low','Internet only'],
+          ['LOG-004','2025-04-16 10:15','contractor-vpn','N/A','10.5.0.12','VPN Certificate','VLAN-20 (Contractor)','Contractor Policy','Allowed','Remote','Medium','Limited access'],
+          ['','','','','','','','','','','',''],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 8, statusMap:{Allowed:'s-low',Quarantined:'s-high',Denied:'s-high','Allowed':'s-low'}
+      },
+      {
+        id: 'net-inv', name: 'Network Device Inventory',
+        desc: 'Full inventory of all network devices with firmware versions, ownership, and patch status.',
+        cols: ['Device ID','Hostname','Type','Manufacturer','Model','Firmware','IP Address','Location','Owner','Last Patched','Patch Status','EOL Date'],
+        rows: [
+          ['DEV-001','core-sw-01','Core Switch','Cisco','Catalyst 9300','17.9.4','10.0.0.1','DC Rack A1','NetOps','2025-03-15','Current','2030-01'],
+          ['DEV-002','edge-fw-01','Firewall','Palo Alto','PA-3220','11.1.2','10.0.0.2','DC Rack A2','SecOps','2025-02-20','Current','2028-06'],
+          ['DEV-003','access-sw-12','Access Switch','Cisco','Catalyst 2960','15.2.7','10.1.5.12','Floor 3 IDF','IT Ops','2024-11-10','Outdated','2026-12'],
+          ['DEV-004','wifi-ap-08','Wireless AP','Aruba','515 AP','8.10.0.4','10.1.8.23','Conference B','IT Ops','2025-04-01','Current','2029-06'],
+          ['DEV-005','router-edge-01','Router','Cisco','ASR 1001-X','17.6.3','10.0.0.3','DC Rack A3','NetOps','2024-12-05','Outdated','2031-01'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 10, statusMap:{Current:'s-low',Outdated:'s-high','Pending Patch':'s-medium'}
+      },
+    ]
+  },
+  {
+    id: 'data', icon: '🗄️', title: 'Data Security',
+    badge: 'Dashboard + 5 tmpl',
+    templates: [
+      {
+        id: 'data-class', name: 'Data Classification Register',
+        desc: 'Catalog and classify all data assets by sensitivity, storage location, and applicable controls.',
+        cols: ['Asset ID','Data Name','Classification','Data Type','Owner','Storage Location','Encryption','Retention Period','Access Level','Regulatory Scope','Last Reviewed','Notes'],
+        rows: [
+          ['DA-001','Customer PII','Confidential','Structured','Data Privacy Team','AWS S3 (encrypted)','AES-256','7 years','Need to Know','GDPR, CCPA','2025-03-01','Masked in non-prod'],
+          ['DA-002','Financial Records','Restricted','Structured','Finance Dept','On-prem SQL Server','TDE','10 years','Authorized Only','SOX, PCI-DSS','2025-01-15','Quarterly audit'],
+          ['DA-003','Employee HR Data','Confidential','Structured','HR Dept','Workday Cloud','TLS + AES','5 years','HR + Management','GDPR','2025-02-28','Role-based access'],
+          ['DA-004','Marketing Collateral','Public','Unstructured','Marketing','SharePoint','TLS','3 years','All Staff','—','2025-04-01','External sharing OK'],
+          ['DA-005','Audit Logs','Internal','Semi-structured','SecOps','SIEM (Splunk)','AES-256','2 years','SecOps Only','SOX','2025-03-20','Immutable storage'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 2, statusMap:{Confidential:'s-high',Restricted:'s-critical',Public:'s-low',Internal:'s-medium'}
+      },
+      {
+        id: 'data-breach', name: 'Data Breach Notification Log',
+        desc: 'Track data breach incidents, notification obligations, regulatory deadlines, and remediation status.',
+        cols: ['Breach ID','Discovery Date','Description','Data Affected','Records Count','Severity','Notified Regulator','Notification Date','Regulator Deadline','Notified Subjects','Legal Counsel','Status'],
+        rows: [
+          ['BR-001','2025-02-10','Phishing email led to credential theft','Email content, contacts','~500','High','ICO (UK)','2025-02-17','2025-03-10','Affected users emailed','Yes','Closed'],
+          ['BR-002','2025-03-05','Misconfigured S3 bucket exposed logs','Access logs','~12,000','Critical','FTC + State AG','2025-03-08','2025-04-04','In progress','Yes','Ongoing'],
+          ['BR-003','2025-04-02','Lost encrypted laptop','Local cache data','~50','Low','None required','—','—','Not required','No','Closed'],
+          ['','','','','','','','','','','',''],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 11, statusMap:{Closed:'s-low',Ongoing:'s-high','In Progress':'s-medium'}
+      },
+      {
+        id: 'data-dlp', name: 'DLP Incident Log',
+        desc: 'Log data loss prevention policy violations, investigation status, and containment actions.',
+        cols: ['Incident ID','Date','User','Endpoint','DLP Tool','Policy Violated','Data Type','Destination','Action Taken','Severity','Investigator','Status'],
+        rows: [
+          ['DLP-001','2025-03-14','j.doe@corp.com','LAPTOP-045','Symantec DLP','PII External Transfer','Customer SSNs','Gmail','Blocked + Alert','Critical','SecOps L2','Closed'],
+          ['DLP-002','2025-03-28','m.smith@corp.com','LAPTOP-078','Symantec DLP','Credit Card Pattern','PCI Data','USB Drive','Blocked','High','SecOps L1','Investigating'],
+          ['DLP-003','2025-04-05','r.chen@corp.com','WORKST-012','Symantec DLP','Source Code Exfil','IP / Code','OneDrive Personal','Warned','Medium','SecOps L1','Closed'],
+          ['','','','','','','','','','','',''],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 11, statusMap:{Closed:'s-low',Investigating:'s-high','Monitoring':'s-medium'}
+      },
+      {
+        id: 'data-retention', name: 'Data Retention & Deletion Schedule',
+        desc: 'Manage data lifecycle — retention periods, scheduled deletions, and compliance alignment.',
+        cols: ['Record Type','Business Owner','Retention Period','Regulatory Basis','Storage System','Format','Auto-Delete?','Next Review','Deletion Method','Last Action','Compliance Status','Notes'],
+        rows: [
+          ['Customer Contracts','Legal / Sales','7 years','SOX, GDPR','DocuSign + S3','PDF','No — manual review','2025-07-01','Secure shred + wipe','2024-07-15','Compliant','Archived post-expiry'],
+          ['Access Logs','IT Security','2 years','ISO 27001','Splunk','Log','Yes — automated','2025-09-01','Automated purge','Ongoing','Compliant','Immutable during retention'],
+          ['Employee Records (current)','HR','During employment + 7yr','Labor law, GDPR','Workday','Structured','No','Annual','Secure deletion','—','Compliant','DSAR process in place'],
+          ['Marketing Campaign Data','Marketing','3 years','CCPA','Salesforce','CRM','Yes','2026-01-01','Platform delete','—','Under Review','Data map pending'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 10, statusMap:{Compliant:'s-low','Under Review':'s-medium','Non-Compliant':'s-high'}
+      },
+      {
+        id: 'data-risk', name: 'Data Risk Assessment Matrix',
+        desc: 'Assess and score risks to data assets by likelihood, impact, and existing controls.',
+        cols: ['Risk ID','Data Asset','Risk Description','Threat Source','Vulnerability','Likelihood (1-5)','Impact (1-5)','Risk Score','Existing Controls','Residual Risk','Treatment','Owner'],
+        rows: [
+          ['DR-001','Customer PII DB','Unauthorised access via stolen creds','External attacker','Weak MFA','4','5','20','MFA, RBAC, encryption','Medium','Enforce phishing-resistant MFA','CISO'],
+          ['DR-002','Financial Reporting DB','Insider data theft','Malicious insider','Overprivileged accounts','2','5','10','DLP, access reviews','Low','Quarterly access review','Data Owner'],
+          ['DR-003','HR Records','Data breach via API vuln','External attacker','Unpatched API endpoint','3','4','12','WAF, pen test schedule','Medium','Patch within 30 days','AppSec'],
+          ['DR-004','Audit Log Store','Log tampering by attacker','Threat actor post-breach','Write access to logs','2','5','10','WORM storage, SIEM alert','Low','Monitor write attempts','SecOps'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 9, statusMap:{Low:'s-low',Medium:'s-medium',High:'s-high','Critical':'s-critical'}
+      }
+    ]
+  },
+  {
+    id: 'endpoint', icon: '💻', title: 'Endpoint Security',
+    badge: 'Dashboard + 5 tmpl',
+    templates: [
+      {
+        id: 'ep-inv', name: 'Endpoint Asset Inventory',
+        desc: 'Full inventory of all endpoint devices with OS, compliance state, and assigned user.',
+        cols: ['Asset ID','Hostname','Device Type','OS','OS Version','Assigned User','Department','EDR Installed','Last Check-in','Patch Compliance','Encryption','Status'],
+        rows: [
+          ['EP-001','LAPTOP-JSMITH','Laptop','Windows','11 22H2','John Smith','Finance','CrowdStrike ✓','2025-04-16','Compliant','BitLocker','Active'],
+          ['EP-002','WORKST-SEC01','Workstation','Windows','10 22H2','Sarah Lee','SecOps','CrowdStrike ✓','2025-04-15','Compliant','BitLocker','Active'],
+          ['EP-003','MACBK-MCHEN','Laptop','macOS','14.4','Mike Chen','Engineering','CrowdStrike ✓','2025-04-16','Compliant','FileVault','Active'],
+          ['EP-004','LAPTOP-RJONES','Laptop','Windows','10 21H1','Robert Jones','HR','CrowdStrike ✓','2025-04-10','Non-Compliant','Not Enabled','Active'],
+          ['EP-005','WORKST-LOBBY','Workstation','Windows','10 LTSC','(Shared)','Reception','None','2025-03-01','Non-Compliant','None','At Risk'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 11, statusMap:{Active:'s-low','At Risk':'s-high',Decommissioned:'s-closed'}
+      },
+      {
+        id: 'ep-malware', name: 'Endpoint Malware Detection Log',
+        desc: 'Track malware detections, quarantine actions, and remediation outcomes per endpoint.',
+        cols: ['Detection ID','Timestamp','Hostname','User','Malware Name','Type','Severity','Detection Source','Action Taken','Quarantined?','Remediated?','Notes'],
+        rows: [
+          ['MAL-001','2025-04-10 14:22','LAPTOP-RJONES','Robert Jones','Emotet.Gen','Trojan','Critical','CrowdStrike','Killed + Quarantine','Yes','Yes','Re-imaged device'],
+          ['MAL-002','2025-04-12 09:05','WORKST-003','Alice Brown','Miner.XMR','Cryptominer','High','CrowdStrike','Removed','Yes','Yes','Software restriction updated'],
+          ['MAL-003','2025-04-15 16:48','LAPTOP-003','Dave Kim','Adware.Generic','Adware','Low','Windows Defender','Removed','No','Yes','No data exposure'],
+          ['MAL-004','2025-04-16 07:55','SERVER-WEB01','(System)','WebShell.PHP','Backdoor','Critical','EDR Behavioral','Killed + Alert','Yes','In Progress','IR team engaged'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 6, statusMap:{Critical:'s-critical',High:'s-high',Medium:'s-medium',Low:'s-low'}
+      },
+      {
+        id: 'ep-baseline', name: 'Endpoint Security Baseline Checklist',
+        desc: 'Verify endpoint hardening controls against your security baseline — per device or device class.',
+        cols: ['Control ID','Control Description','Category','Device Type','Expected State','Current State','Compliant?','Last Checked','Remediation Action','Priority','Owner','Notes'],
+        rows: [
+          ['CTL-001','Full disk encryption enabled','Data Protection','All Laptops','Enabled','Enabled','Yes','2025-04-01','—','High','IT Ops','BitLocker/FileVault'],
+          ['CTL-002','EDR agent installed & reporting','Detection','All Endpoints','Installed + Active','Active','Yes','2025-04-16','—','Critical','SecOps','CrowdStrike'],
+          ['CTL-003','Auto-lock after 5 min inactivity','Access Control','All Desktops/Laptops','≤5 min','10 min','No','2025-04-01','Push GPO update','Medium','IT Ops','GPO pending'],
+          ['CTL-004','Local admin accounts disabled','Privilege Mgmt','Workstations','Disabled','Enabled on 3 hosts','No','2025-04-01','Review exceptions','High','SecOps','Exception process needed'],
+          ['CTL-005','OS patched within 30 days','Patch Mgmt','All Endpoints','≤30 days','12 days avg','Yes','2025-04-16','—','High','IT Ops','WSUS + Intune'],
+          ['CTL-006','USB storage blocked','Data Protection','Corp Devices','Blocked','Blocked','Yes','2025-04-01','—','Medium','IT Ops','DLP policy applied'],
+        ],
+        statusCol: 6, statusMap:{Yes:'s-low',No:'s-high','Partial':'s-medium'}
+      },
+      {
+        id: 'ep-isolation', name: 'Endpoint Isolation Impact Tracker',
+        desc: 'Track the business impact of isolating endpoints during incident response.',
+        cols: ['Isolation ID','Date','Hostname','User','Business Unit','Reason for Isolation','Systems Affected','Business Impact','Isolated By','Isolation Start','Isolation End','Status'],
+        rows: [
+          ['ISO-001','2025-04-10','LAPTOP-RJONES','Robert Jones','Finance','Malware detected (Emotet)','Finance app, email','Delayed 3 invoice approvals','SecOps L2','2025-04-10 14:30','2025-04-11 10:00','Released'],
+          ['ISO-002','2025-04-16','SERVER-WEB01','(System)','IT / Web','Webshell detected','Web services, APIs','Customer portal offline 2hr','SecOps L3','2025-04-16 08:00','Ongoing','Isolated'],
+          ['','','','','','','','','','','',''],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 11, statusMap:{Released:'s-low',Isolated:'s-high','Partially Released':'s-medium'}
+      },
+      {
+        id: 'ep-cost', name: 'Incident Cost Impact Analysis',
+        desc: 'Quantify the financial and operational cost of security incidents per endpoint event.',
+        cols: ['Incident ID','Date','Incident Type','Affected Assets','Downtime (hrs)','Staff Hours Spent','Hourly Cost ($)','Tool/Vendor Cost ($)','Data Loss Value ($)','Regulatory Fine ($)','Total Cost ($)','Notes'],
+        rows: [
+          ['INC-001','2025-04-10','Malware – Emotet','1 laptop','4','12','$150','$0','$0','$0','$1,800','Re-imaging + IR time'],
+          ['INC-002','2025-04-16','Webshell on Server','Web server','2','20','$200','$5,000','$0','$0','$9,000','Vendor IR assist'],
+          ['INC-003','2025-02-20','Ransomware attempt','3 workstations','8','40','$150','$2,000','$0','$0','$8,000','Contained before encrypt'],
+          ['','','','','','','','','','','',''],
+          ['','','','','','','','','','','',''],
+        ]
+      }
+    ]
+  },
+  {
+    id: 'grc', icon: '⚖️', title: 'Governance, Risk & Compliance',
+    badge: 'Dashboard + 6 tmpl',
+    templates: [
+      {
+        id: 'grc-audit', name: 'Audit Findings Remediation Tracker',
+        desc: 'Track internal and external audit findings through to remediation and closure.',
+        cols: ['Finding ID','Audit Name','Date Found','Finding Description','Severity','Control Reference','Owner','Target Date','Remediation Plan','Status','Closed Date','Evidence'],
+        rows: [
+          ['AUD-001','Annual SOC 2 Audit','2025-01-15','MFA not enforced for privileged accounts','Critical','CC6.1','IT Security','2025-03-15','Enable MFA for all admins via IdP','Closed','2025-03-10','Screenshot + config export'],
+          ['AUD-002','ISO 27001 Internal','2025-02-01','No formal BYOD policy documented','High','A.6.2.1','HR + IT','2025-04-01','Draft and approve BYOD policy','In Progress','—','Policy draft attached'],
+          ['AUD-003','PCI-DSS QSA','2025-03-10','Cardholder data found in non-PCI system','Critical','Req 3.2','Data Team','2025-04-10','Purge data + implement DLP rule','In Progress','—','DLP rule tested'],
+          ['AUD-004','GDPR Internal Audit','2025-03-22','No ROPA (Record of Processing) maintained','Medium','Art. 30 GDPR','DPO','2025-05-01','Create ROPA in OneTrust','Open','—','—'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 9, statusMap:{Closed:'s-low','In Progress':'s-medium',Open:'s-high'}
+      },
+      {
+        id: 'grc-compliance', name: 'Compliance Requirements Tracker',
+        desc: 'Track all regulatory and framework compliance requirements, obligations, and evidence status.',
+        cols: ['Req ID','Framework','Requirement','Control Area','Owner','Current State','Gap Identified','Evidence Collected','Review Frequency','Next Review','Compliance %','Notes'],
+        rows: [
+          ['REQ-001','ISO 27001','A.9.4.2 – Secure log-on procedures','Access Control','IT Sec','Implemented','None','Login policy + IdP config','Annual','2026-01-15','100%','FIDO2 deployed'],
+          ['REQ-002','NIST CSF','PR.AC-7 – Users are authenticated','Identity Mgmt','IT Sec','Partial','MFA gaps in legacy systems','MFA report','Quarterly','2025-06-01','75%','Legacy system roadmap in place'],
+          ['REQ-003','PCI DSS 4.0','Req 6.3.3 – All patches installed','Vuln Mgmt','IT Ops','Implemented','None','Patch report','Monthly','2025-05-10','100%','Automated via Intune'],
+          ['REQ-004','GDPR','Art.32 – Security of processing','Data Protection','DPO','Partial','Encryption gap in dev env','Encryption audit','Annual','2025-09-01','60%','Dev env remediation planned'],
+          ['REQ-005','SOC 2 Type II','CC6.1 – Logical access controls','Access Control','IT Sec','Implemented','None','Access review logs','Semi-annual','2025-07-01','100%','Reviewed last month'],
+          ['','','','','','','','','','','',''],
+        ]
+      },
+      {
+        id: 'grc-ctrl', name: 'Control Framework Mapping',
+        desc: 'Map your security controls across multiple frameworks (ISO, NIST, PCI, SOC 2) to identify overlaps and gaps.',
+        cols: ['Control ID','Control Description','ISO 27001','NIST CSF','PCI DSS 4.0','SOC 2','CIS v8','Implemented?','Owner','Evidence','Last Assessed','Notes'],
+        rows: [
+          ['CTRL-001','Multi-Factor Authentication','A.9.4.2','PR.AC-7','Req 8.4','CC6.1','CIS 6.3','Yes','IT Security','IdP config + logs','2025-03-01','Phishing-resistant MFA'],
+          ['CTRL-002','Vulnerability Management Program','A.12.6.1','DE.CM-8','Req 6.3.3','CC7.1','CIS 7.1','Yes','SecOps','VM reports','2025-04-01','Monthly scans'],
+          ['CTRL-003','Security Awareness Training','A.7.2.2','PR.AT-1','Req 12.6','CC9.2','CIS 14.1','Yes','HR + SecOps','LMS completion report','2025-02-15','Annual + phishing sim'],
+          ['CTRL-004','Incident Response Plan','A.16.1.5','RS.RP-1','Req 12.10','CC7.3','CIS 17','Yes','SecOps','IR plan doc','2025-01-20','Tested annually'],
+          ['CTRL-005','Data Encryption at Rest','A.10.1.1','PR.DS-1','Req 3.5','CC6.7','CIS 3.6','Partial','IT Ops','Encryption audit','2025-03-10','Dev env gap'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 7, statusMap:{Yes:'s-low',Partial:'s-medium',No:'s-high'}
+      },
+      {
+        id: 'grc-kri', name: 'Key Risk Indicators (KRI) Tracker',
+        desc: 'Monitor leading risk indicators with thresholds, current values, and trend direction.',
+        cols: ['KRI ID','Risk Indicator','Domain','Threshold (Green)','Threshold (Amber)','Threshold (Red)','Current Value','Status','Trend','Owner','Frequency','Last Updated'],
+        rows: [
+          ['KRI-001','% endpoints with current EDR','Endpoint','≥98%','95-97%','<95%','97.2%','Amber','↓ Declining','IT Ops','Weekly','2025-04-15'],
+          ['KRI-002','Mean Time to Patch (critical)','Vuln Mgmt','<7 days','7-14 days','>14 days','5.3 days','Green','→ Stable','SecOps','Monthly','2025-04-01'],
+          ['KRI-003','Phishing click rate','InfoSec','<3%','3-8%','>8%','4.7%','Amber','↓ Improving','HR/Security','Quarterly','2025-03-31'],
+          ['KRI-004','Privileged accounts with MFA','Identity','100%','95-99%','<95%','100%','Green','→ Stable','IT Sec','Monthly','2025-04-01'],
+          ['KRI-005','Open critical vulnerabilities >30d','Vuln Mgmt','0','1-3','>3','2','Amber','↑ Worsening','SecOps','Weekly','2025-04-16'],
+          ['KRI-006','Data loss incidents per quarter','Data Sec','0','1-2','>2','0','Green','→ Stable','CISO','Quarterly','2025-04-01'],
+        ],
+        statusCol: 7, statusMap:{Green:'s-low',Amber:'s-medium',Red:'s-high'}
+      },
+      {
+        id: 'grc-vendor', name: 'Third Party Vendor Risk Assessment',
+        desc: 'Assess and track cybersecurity risk posed by third-party vendors and supply chain partners.',
+        cols: ['Vendor ID','Vendor Name','Service Type','Data Access','Criticality','Last Assessed','Assessment Method','Security Score','Certifications','Findings','Remediation Due','Status'],
+        rows: [
+          ['VND-001','Acme Cloud Corp','Cloud Infrastructure','High – customer data','Critical','2025-02-15','Full questionnaire + audit','87/100','ISO 27001, SOC 2 T2','Minor: logging gaps','2025-05-01','Active - Monitored'],
+          ['VND-002','PayProcess Ltd','Payment Processing','High – cardholder data','Critical','2025-01-10','QSA review','92/100','PCI DSS 4.0','None','—','Active - Compliant'],
+          ['VND-003','HR SoftTools','HRIS Platform','Medium – employee data','High','2024-11-01','Self-assessment questionnaire','71/100','ISO 27001','Weak access controls','2025-06-01','Under Review'],
+          ['VND-004','Office Supplies Co','Procurement','None','Low','2024-06-01','Lightweight review','65/100','None','No security policy','2025-09-01','Active - Low Risk'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 11, statusMap:{'Active - Compliant':'s-low','Active - Monitored':'s-medium','Under Review':'s-medium','Suspended':'s-high'}
+      },
+      {
+        id: 'grc-ctrl-matrix', name: 'Control Mapping Matrix',
+        desc: 'Matrix view mapping controls to risk categories and implementation status across the organization.',
+        cols: ['Control','Category','Risk Addressed','Priority','Implementation Status','Test Result','Last Tested','Test Frequency','Owner','Next Test','Exceptions','Notes'],
+        rows: [
+          ['Privileged Access Management','Identity & Access','Insider threat, privilege abuse','Critical','Implemented','Pass','2025-03-01','Quarterly','IT Sec','2025-06-01','2 legacy service accts','PAM tool: CyberArk'],
+          ['Security Awareness Program','Human Risk','Phishing, social engineering','High','Implemented','Pass','2025-01-31','Annual + continuous','HR/SecOps','2026-01-31','New starters <30 days','KnowBe4 platform'],
+          ['Patch Management Process','Vulnerability','Exploitation of known vulns','Critical','Implemented','Pass','2025-04-01','Monthly','IT Ops','2025-05-01','None','Automated via Intune'],
+          ['SIEM Deployment','Detection & Response','Missed detection of attacks','High','Partial','Partial Pass','2025-02-15','Semi-annual','SecOps','2025-08-15','Cloud coverage gaps','Expanding to cloud logs'],
+          ['Business Continuity Plan','Resilience','Extended outages','High','Implemented','Pass','2025-03-10','Annual','CISO','2026-03-10','None','DR test completed'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 4, statusMap:{Implemented:'s-low',Partial:'s-medium','Not Implemented':'s-high'}
+      }
+    ]
+  },
+  {
+    id: 'soc', icon: '🔭', title: 'Security Operations Center (SOC)',
+    badge: 'Dashboard + 5 tmpl',
+    templates: [
+      {
+        id: 'soc-ir', name: 'Incident Response Playbook',
+        desc: 'Step-by-step incident response procedures mapped to incident type, with owner and SLA targets.',
+        cols: ['Step #','Phase','Action','Responsible','Tool/System','SLA Target','Input Required','Expected Output','Escalation Trigger','Notes','Status','Last Updated'],
+        rows: [
+          ['1','Detection','Receive and log alert from SIEM','SOC L1 Analyst','Splunk SIEM','< 15 min','SIEM alert details','Incident ticket created in JIRA','Severity ≥ High','All alerts regardless of severity','Active','2025-03-01'],
+          ['2','Triage','Validate alert – true or false positive','SOC L1 Analyst','SIEM + EDR','< 30 min','Incident ticket','Triage decision documented','If true positive → Step 3','Use triage checklist','Active','2025-03-01'],
+          ['3','Containment','Isolate affected endpoint(s)','SOC L2 Analyst','CrowdStrike','< 1 hr (Critical)','Triage report','Isolation confirmed in EDR','If server-level → escalate to L3','Document blast radius','Active','2025-03-01'],
+          ['4','Eradication','Remove malware and persistence mechanisms','SOC L2/L3','CrowdStrike + FW','< 4 hrs','Forensic image','Clean bill of health','If widespread → engage IR retainer','Re-image if needed','Active','2025-03-01'],
+          ['5','Recovery','Restore services and monitor','IT Ops + SOC','ITSM + SIEM','< 24 hrs','Eradication report','System restored + monitoring enabled','If recurrence → restart IR process','Comms to business','Active','2025-03-01'],
+          ['6','Lessons Learned','Post-incident review meeting','CISO + SOC Lead','—','< 5 days post-close','Timeline + root cause','PIR report + control improvements','—','All Sev 1/2 mandatory','Active','2025-03-01'],
+        ]
+      },
+      {
+        id: 'soc-triage', name: 'Incident Triage Checklist',
+        desc: 'Structured checklist for L1/L2 analysts to triage and classify incoming security incidents.',
+        cols: ['Check #','Triage Step','Question to Answer','Data Source','Completed?','Finding','Severity Indicator','Analyst','Time Completed','Notes','Escalate?','Next Action'],
+        rows: [
+          ['T-01','Initial Scope','Is this a known false positive?','SIEM Exclusion List','Yes','Not in exclusion list','Proceed','SOC L1','08:15','Verified manually','No','Continue triage'],
+          ['T-02','Asset Criticality','What is the affected asset?','Asset CMDB','Yes','LAPTOP-RJONES – Finance user','Medium-High','SOC L1','08:17','Finance dept device','No','Note criticality'],
+          ['T-03','User Context','Is user behavior anomalous?','UBA / SIEM','Yes','Unusual hour login from new geo','High','SOC L1','08:20','VPN from foreign IP','Yes','Escalate to L2'],
+          ['T-04','Threat Intel Match','Does IOC match known threat actor?','TI Platform (MISP)','Yes','Matches Emotet C2 domain','Critical','SOC L2','08:35','TTPs match TA542','Yes','Engage IR playbook'],
+          ['T-05','Lateral Movement','Signs of lateral movement?','EDR telemetry','Yes','SMB connections to 3 hosts','Critical','SOC L2','08:40','Potential spread','Yes','Isolate all 3 hosts'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 4, statusMap:{Yes:'s-low',No:'s-high','N/A':'s-medium'}
+      },
+      {
+        id: 'soc-log', name: 'Log Source Onboarding Checklist',
+        desc: 'Track the onboarding of new log sources into the SIEM — validation, parsing, and alerting.',
+        cols: ['Source ID','System Name','Log Type','Owner','SIEM Connector','Parsing Rule','Sample Tested','Alert Created','Retention Set','Documentation','Onboard Date','Status'],
+        rows: [
+          ['LS-001','Palo Alto FW-01','Syslog (PAN)','NetOps','Splunk TA PAN','pantraffic','Yes','Brute force rule active','90 days','Confluence page linked','2025-01-10','Active'],
+          ['LS-002','CrowdStrike EDR','API / JSON','SecOps','CrowdStrike Falcon TA','cs:event','Yes','Malware alert + isolation rule','180 days','Runbook updated','2025-01-15','Active'],
+          ['LS-003','AWS CloudTrail','JSON (S3)','Cloud Ops','Splunk Add-on for AWS','aws:cloudtrail','Yes','Privilege escalation alert','365 days','Cloud security runbook','2025-02-01','Active'],
+          ['LS-004','Active Directory','WinEventLog','IT Ops','WinEventLog input','wineventlog:security','Yes','Failed login + lockout rule','90 days','AD security guide','2025-02-20','Active'],
+          ['LS-005','New CRM Platform','HTTP Event Coll','AppDev','HEC endpoint','Custom JSON','In Progress','Not yet','TBD','TBD','TBD','Onboarding'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 11, statusMap:{Active:'s-low',Onboarding:'s-medium','Failed':'s-high','Decommissioned':'s-closed'}
+      },
+      {
+        id: 'soc-malware', name: 'Malware Analysis Report',
+        desc: 'Structured malware analysis reports tracking static analysis, dynamic behavior, and IOCs.',
+        cols: ['Sample ID','Date Received','File Name','MD5 Hash','File Type','Malware Family','Analysis Type','Key Behavior','C2 IOCs','MITRE ATT&CK TTPs','Risk Level','Recommendation'],
+        rows: [
+          ['MAL-RPT-001','2025-04-10','invoice_april.exe','d41d8cd98f00b204e9800998ecf8427e','PE32 Executable','Emotet (Geodo)','Static + Dynamic','Drops loader, contacts C2, steals credentials','185.220.101.45:443, evil-domain[.]ru','T1566.001, T1059.003, T1055','Critical','Isolate, block IOCs, full re-image'],
+          ['MAL-RPT-002','2025-04-12','update_patch.js','5d41402abc4b2a76b9719d911017c592','JavaScript','Coinminer.Generic','Static only','CPU abuse, persistence via scheduled task','pool.minexmr[.]com:4444','T1053.005, T1496','High','Remove, check for persistence, patch vector'],
+          ['MAL-RPT-003','2025-04-15','shell.php','7d793037a0760186574b0282f2f435e7','PHP Web Shell','WebShell.Generic','Static + Dynamic','Remote command execution, file browser','N/A (server-side)','T1505.003, T1059.004','Critical','Remove file, patch web app, audit server'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 10, statusMap:{Critical:'s-critical',High:'s-high',Medium:'s-medium',Low:'s-low'}
+      },
+      {
+        id: 'soc-rca', name: 'Root Cause Analysis',
+        desc: 'Document post-incident root cause analysis with 5-why methodology and corrective actions.',
+        cols: ['RCA ID','Incident Ref','Date','Incident Summary','Why 1','Why 2','Why 3','Why 4','Root Cause','Corrective Action','Owner','Target Date'],
+        rows: [
+          ['RCA-001','INC-2025-041','2025-04-11','Emotet infection on finance laptop via phishing email','User clicked malicious link','Email passed spam filter','Filter rules not updated with latest Emotet IOCs','Threat intel feeds not automated into filter','Outdated spam filter rules / manual TI process','Automate TI feed integration into email gateway','SecOps','2025-05-01'],
+          ['RCA-002','INC-2025-038','2025-04-08','Privilege escalation via unpatched local admin vuln','Attacker exploited CVE-2024-XXXX','Patch not applied within SLA','Patch was deprioritised due to testing backlog','No risk-based patching workflow','Manual patching process lacking risk prioritisation','Implement CVSS-based auto-prioritisation in patch process','IT Ops','2025-05-15'],
+          ['','','','','','','','','','','',''],
+          ['','','','','','','','','','','',''],
+        ]
+      }
+    ]
+  },
+  {
+    id: 'cloud', icon: '☁️', title: 'Cloud Security',
+    badge: 'Dashboard + 5 tmpl',
+    templates: [
+      {
+        id: 'cld-iam', name: 'Cloud Access Control Matrix',
+        desc: 'Map cloud IAM roles and permissions across services and teams with least-privilege analysis.',
+        cols: ['Principal (User/Role)','Cloud Provider','Account/Project','Assigned Role','Permissions Scope','MFA Enabled?','Last Used','Least Privilege?','Access Review','Owner','Risk Level','Notes'],
+        rows: [
+          ['admin@corp.com','AWS','prod-account-001','AdministratorAccess','Full account access','Yes','2025-04-15','No – overprivileged','Q1 2025','CloudOps','High','Review for scoped role'],
+          ['ci-deploy-role','AWS','prod-account-001','Custom deploy role','S3:PutObject, ECS:UpdateService','N/A (service)','2025-04-16','Yes','Q2 2025','DevOps','Low','Scoped to deploy pipeline'],
+          ['dev-team-group','GCP','project-dev-01','Editor','Project-wide edit','Yes (50%)','2025-04-10','No – Editor too broad','Q1 2025','IT Sec','Medium','Move to custom roles'],
+          ['analytics-sa','GCP','project-analytics','BigQuery Data Viewer','BQ tables only','N/A','2025-04-14','Yes','Q2 2025','Data Team','Low','Correct scope'],
+          ['backup-lambda-role','AWS','prod-account-001','Custom backup role','S3:GetObject, S3:PutObject','N/A','2025-04-16','Yes','Q2 2025','CloudOps','Low','Auto-rotation enabled'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 10, statusMap:{High:'s-high',Medium:'s-medium',Low:'s-low',Critical:'s-critical'}
+      },
+      {
+        id: 'cld-inv', name: 'Cloud Asset Inventory Tracker',
+        desc: 'Maintain a live inventory of cloud assets with security posture, tags, and ownership.',
+        cols: ['Asset ID','Resource Name','Type','Cloud Provider','Region','Account','Owner','Environment','Public Exposure','Encryption','Compliance Tag','Last Scanned'],
+        rows: [
+          ['CA-001','prod-web-alb','Load Balancer','AWS','us-east-1','prod-001','Platform Team','Production','Internet-facing','TLS 1.3','PCI, SOC2','2025-04-16'],
+          ['CA-002','customer-data-bucket','S3 Bucket','AWS','us-east-1','prod-001','Data Team','Production','Private','AES-256','PCI, GDPR','2025-04-16'],
+          ['CA-003','dev-test-vm-01','Compute VM','GCP','us-central1','dev-project','Engineering','Development','Public IP assigned','Not encrypted','Dev','2025-04-15'],
+          ['CA-004','analytics-bq-dataset','BigQuery Dataset','GCP','us','analytics-project','Data Team','Production','Private','Google default','SOC2','2025-04-16'],
+          ['CA-005','logs-storage-account','Storage Account','Azure','East US','azure-prod','IT Ops','Production','Private','AES-256','SOC2','2025-04-14'],
+          ['','','','','','','','','','','',''],
+        ]
+      },
+      {
+        id: 'cld-backup', name: 'Cloud Backup & Recovery Testing Tracker',
+        desc: 'Track cloud backup jobs and recovery test results to ensure RTO/RPO objectives are met.',
+        cols: ['Test ID','Asset Name','Cloud Provider','Backup Type','Backup Frequency','RPO Target','RTO Target','Last Backup','Test Date','Recovery Time','Test Result','Notes'],
+        rows: [
+          ['BKP-001','prod-rds-postgres','AWS','Automated RDS Snapshot','Daily','1 hour','4 hours','2025-04-15 02:00','2025-03-01','2.5 hours','Pass','Within RTO, data intact'],
+          ['BKP-002','customer-data-bucket','AWS','S3 Cross-Region Replication','Real-time','Near-zero','2 hours','Continuous','2025-02-15','45 min','Pass','CRR to us-west-2'],
+          ['BKP-003','prod-vm-linux-01','GCP','GCE Snapshot','Daily','4 hours','6 hours','2025-04-16 03:00','2025-01-20','7.5 hours','Fail','Exceeded RTO – investigate'],
+          ['BKP-004','analytics-bq-dataset','GCP','BQ Dataset Export','Weekly','24 hours','8 hours','2025-04-13','2025-03-10','3 hours','Pass','GCS export to archive bucket'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 10, statusMap:{Pass:'s-low',Fail:'s-high','Partial Pass':'s-medium'}
+      },
+      {
+        id: 'cld-ir', name: 'Cloud Incident Response Log',
+        desc: 'Track cloud-specific security incidents with service context, blast radius, and remediation.',
+        cols: ['Incident ID','Date','Cloud Provider','Service Affected','Incident Type','Description','Severity','Detected By','Blast Radius','Containment Action','Status','Lessons Learned'],
+        rows: [
+          ['CLD-001','2025-03-15','AWS','S3','Misconfiguration','Public read ACL on customer-data bucket','Critical','Cloud Security Posture (Prowler)','~12,000 records potentially exposed','Set bucket private + block public access','Resolved','Add S3 public block policy as preventive control'],
+          ['CLD-002','2025-04-02','AWS','IAM','Credential Exposure','Access key committed to public GitHub repo','High','GitGuardian alert','Key for dev IAM user, S3 read access','Revoke key, rotate, scan for misuse','Resolved','Pre-commit hook + secrets scanning in CI/CD'],
+          ['CLD-003','2025-04-10','GCP','Compute Engine','Cryptominer','VM in dev project running XMR miner','Medium','Cloud billing anomaly','Single dev VM, no prod access','Terminate VM, revoke compromised SA','Resolved','Restrict public SSH, enforce OS Login'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 10, statusMap:{Resolved:'s-low','In Progress':'s-medium',Open:'s-high'}
+      },
+      {
+        id: 'cld-baseline', name: 'Cloud Security Configuration Baseline',
+        desc: 'Validate cloud configurations against security benchmarks (CIS, AWS Well-Architected, etc.).',
+        cols: ['Check ID','Service','Configuration Check','Benchmark Ref','Expected State','Current State','Compliant?','Risk if Failing','Remediation','Owner','Last Checked','Priority'],
+        rows: [
+          ['AWS-001','S3','Block Public Access enabled (account level)','CIS AWS 2.1.5','Enabled','Enabled','Yes','Data exposure','N/A – already compliant','CloudOps','2025-04-01','Critical'],
+          ['AWS-002','IAM','MFA enabled for root account','CIS AWS 1.5','Enabled','Enabled','Yes','Full account takeover','N/A','CloudOps','2025-04-01','Critical'],
+          ['AWS-003','EC2','No security groups allowing 0.0.0.0/0 SSH','CIS AWS 5.2','Restricted','3 violations found','No','Unrestricted SSH access','Restrict SGs to bastion IPs','CloudOps','2025-04-16','High'],
+          ['AWS-004','CloudTrail','Multi-region trail enabled','CIS AWS 3.1','Enabled','Enabled','Yes','Blind spots in audit log','N/A','CloudOps','2025-04-01','High'],
+          ['GCP-001','GCS','Uniform bucket-level access enabled','CIS GCP 5.1','Enabled','Disabled on 2 buckets','No','ACL bypass risk','Enable UBLA on affected buckets','CloudOps','2025-04-16','High'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 6, statusMap:{Yes:'s-low',No:'s-high','Partial':'s-medium'}
+      }
+    ]
+  },
+  {
+    id: 'infosec', icon: '🔏', title: 'Information Security',
+    badge: 'Dashboard + 5 tmpl',
+    templates: [
+      {
+        id: 'is-access', name: 'Access Rights & Permissions Matrix',
+        desc: 'Full matrix of user access rights across systems — for access reviews and least privilege enforcement.',
+        cols: ['User ID','Name','Department','Role','System','Access Level','Granted Date','Last Reviewed','Business Justification','Approved By','Active?','Notes'],
+        rows: [
+          ['USR-001','John Smith','Finance','Analyst','ERP System','Read + Write Finance module','2024-06-01','2025-03-01','Finance analyst role','Finance Manager','Yes','Reviewed Q1 2025'],
+          ['USR-002','Sarah Lee','SecOps','Security Engineer','SIEM (Splunk)','Admin','2023-09-15','2025-04-01','SOC role requirement','CISO','Yes','MFA enforced'],
+          ['USR-003','Mike Chen','Engineering','Developer','Production DB','Read only','2024-11-01','2025-03-01','Debug access for prod issues','CTO','Yes','Read replica only'],
+          ['USR-004','Alice Brown','Marketing','Manager','CRM (Salesforce)','Standard User + Reports','2024-03-10','2025-03-01','Marketing ops','Marketing Director','Yes','Standard license'],
+          ['USR-005','Tom Davis','Finance','Director','ERP System','Full Admin','2022-01-10','2024-09-01','Legacy – to be reviewed','(Outdated)','Yes','Overprivileged – flag for review'],
+          ['','','','','','','','','','','',''],
+        ]
+      },
+      {
+        id: 'is-policy', name: 'Information Security Policy Compliance Checklist',
+        desc: 'Track employee and departmental compliance with information security policies.',
+        cols: ['Policy ID','Policy Name','Applies To','Compliance Method','Dept/User','Status','Last Check','Next Review','Non-Compliance Action','Owner','Evidence','Notes'],
+        rows: [
+          ['POL-001','Acceptable Use Policy','All staff','Annual sign-off','All Departments','Compliant','2025-01-31','2026-01-31','HR formal warning','HR + IT Sec','DocuSign records','100% signed'],
+          ['POL-002','Clean Desk Policy','Office-based staff','Spot checks','Finance, Legal, HR','Non-Compliant','2025-03-20','2025-06-20','Written notice','Facilities + IT','Audit checklist','3 violations found'],
+          ['POL-003','Password Policy (14-char min)','All staff','IdP enforcement','All Departments','Compliant','2025-04-01','2025-10-01','Auto-enforce','IT Security','IdP password report','Automated enforcement'],
+          ['POL-004','Data Classification Policy','All data handlers','Training + labelling audit','Data Team, Finance, Legal','Partial','2025-02-15','2025-05-15','Training required','DPO','Training completion %','Legal dept pending training'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 5, statusMap:{Compliant:'s-low','Non-Compliant':'s-high',Partial:'s-medium'}
+      },
+      {
+        id: 'is-incident', name: 'Incident Reporting & Tracking Sheet',
+        desc: 'Central log for all reported information security incidents from identification to closure.',
+        cols: ['Incident ID','Date Reported','Reporter','Incident Type','Description','Severity','Affected System','Assigned To','Status','Root Cause','Date Closed','Lessons Learned'],
+        rows: [
+          ['IS-001','2025-02-10','j.smith@corp.com','Phishing','User received targeted phishing email and clicked link','High','Email / Laptop','SecOps L2','Closed','No email filter IOC rule for sender domain','2025-02-15','Added IOC to email gateway'],
+          ['IS-002','2025-03-05','IT Helpdesk','Unauthorised Access','Account login from unrecognised foreign IP','Medium','SSO / Identity','SecOps L1','Closed','VPN not required for SSO','2025-03-07','Enforced VPN requirement'],
+          ['IS-003','2025-04-01','Auto (SIEM)','Malware Detection','Cryptominer detected on dev workstation','Medium','Dev Workstation','SecOps L1','Closed','Dev downloaded cracked software','2025-04-03','Software restriction policy update'],
+          ['IS-004','2025-04-14','a.patel@corp.com','Data Exposure Suspicion','Customer file found in shared drive incorrectly','Low','SharePoint','Data Privacy Team','In Progress','Incorrect folder permissions','—','Permissions audit in progress'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 8, statusMap:{Closed:'s-low','In Progress':'s-medium',Open:'s-high'}
+      },
+      {
+        id: 'is-dbn', name: 'Data Breach Notification Log',
+        desc: 'Manage data breach notifications to regulators and data subjects with deadline tracking.',
+        cols: ['Breach ID','Discovery Date','Breach Description','Data Types Affected','Record Count','Severity','Regulator','Notification Deadline','Notified On','Subject Notification','Legal Involved','Status'],
+        rows: [
+          ['DBN-001','2025-02-10','Phishing-led credential compromise exposed email content','Email, contacts, internal docs','~500','High','ICO (UK) – 72hr rule','2025-02-13','2025-02-12','Affected users notified 2025-02-15','Yes','Closed'],
+          ['DBN-002','2025-03-05','Misconfigured S3 bucket with public read ACL','Customer account data, email addresses','~12,000','Critical','FTC + State AG','2025-04-04','2025-03-08','Notification in progress','Yes','Ongoing'],
+          ['DBN-003','2025-04-02','Laptop lost (encrypted)','Local filesystem cache','~50','Low','None – encrypted device','N/A','N/A','Not required by law','No','Closed'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 11, statusMap:{Closed:'s-low',Ongoing:'s-high','In Progress':'s-medium'}
+      },
+      {
+        id: 'is-tracking', name: 'Information Security Tracking Sheet',
+        desc: 'High-level master tracker for all active information security tasks, projects, and initiatives.',
+        cols: ['Item ID','Category','Title','Description','Priority','Owner','Start Date','Target Date','% Complete','Blocker','Status','Notes'],
+        rows: [
+          ['IST-001','Project','Zero Trust Network Access rollout','Deploy ZTNA to replace legacy VPN for all remote staff','Critical','IT Sec + IT Ops','2025-01-01','2025-09-30','35%','Vendor contract delay','In Progress','POC complete, procurement underway'],
+          ['IST-002','Audit Action','Resolve SOC 2 MFA finding','Enforce phishing-resistant MFA on all privileged accounts','High','IT Security','2025-02-01','2025-03-15','100%','None','Complete','Closed ahead of schedule'],
+          ['IST-003','Compliance','GDPR Article 30 ROPA','Create and maintain Records of Processing Activities','High','DPO','2025-03-01','2025-05-31','60%','Data mapping delays','In Progress','OneTrust implementation'],
+          ['IST-004','Training','Annual security awareness campaign','Mandatory training + phishing simulation for all staff','Medium','HR + SecOps','2025-02-01','2025-03-31','100%','None','Complete','97% completion rate'],
+          ['IST-005','Vulnerability','Remediate critical open vulns','Close all critical CVEs identified in March scan','Critical','SecOps','2025-03-20','2025-04-30','70%','Dev environment patch window','In Progress','2 of 6 remaining'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 10, statusMap:{Complete:'s-low','In Progress':'s-medium',Blocked:'s-high',Open:'s-open'}
+      }
+    ]
+  },
+  {
+    id: 'appsec', icon: '🛡️', title: 'Application Security',
+    badge: 'Dashboard + 5 tmpl',
+    templates: [
+      {
+        id: 'app-vuln', name: 'Application Vulnerability Register',
+        desc: 'Central register of all application vulnerabilities — from scans, pen tests, and bug bounty.',
+        cols: ['Vuln ID','Application','Vulnerability','Type','Severity','CVSS Score','Discovery Method','Discovery Date','Affected Component','Assigned To','Status','Target Fix Date'],
+        rows: [
+          ['VULN-001','Customer Portal','SQL Injection in search endpoint','Injection (OWASP A03)','Critical','9.8','Internal pen test','2025-03-10','/api/search?q=','AppSec Team','In Progress','2025-04-25'],
+          ['VULN-002','Admin Dashboard','Broken Access Control – IDOR on /users/ID','Access Control (OWASP A01)','High','8.1','Bug bounty report','2025-03-25','/api/admin/users/:id','Dev Team Lead','In Progress','2025-04-30'],
+          ['VULN-003','Mobile App (iOS)','Insecure data storage – creds in NSUserDefaults','Security Misconfiguration','High','7.5','DAST scan','2025-04-01','AuthManager.swift','Mobile Dev','Resolved','2025-04-10'],
+          ['VULN-004','API Gateway','Missing rate limiting on auth endpoint','Security Misconfiguration','Medium','5.3','DAST scan','2025-04-05','/api/auth/login','Platform Team','Open','2025-05-15'],
+          ['VULN-005','Payment Module','TLS 1.1 still supported','Cryptographic Failures (OWASP A02)','Medium','5.9','SAST scan','2025-02-20','TLS config','DevOps','Resolved','2025-03-01'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 10, statusMap:{Resolved:'s-low','In Progress':'s-medium',Open:'s-high','Risk Accepted':'s-closed'}
+      },
+      {
+        id: 'app-sast', name: 'SAST/DAST Findings Tracker',
+        desc: 'Track findings from static and dynamic application security testing across your pipeline.',
+        cols: ['Finding ID','Scan Type','Tool','Application','Branch/Build','Vulnerability Type','Severity','File/Endpoint','Line/Param','False Positive?','Assigned To','Status'],
+        rows: [
+          ['SAST-001','SAST','Semgrep','customer-portal','main','SQL Injection','Critical','src/api/search.js','Line 142','No','AppSec','Confirmed – fix in dev'],
+          ['SAST-002','SAST','Semgrep','customer-portal','main','Hardcoded Secret','High','config/db.config.js','Line 8','No','Dev Lead','Fixed + secret rotated'],
+          ['DAST-001','DAST','OWASP ZAP','customer-portal','staging','XSS in comment field','High','/api/comments POST','body.text param','No','Dev Team','In Progress'],
+          ['DAST-002','DAST','Burp Suite Pro','admin-dashboard','staging','IDOR on user endpoint','High','/api/admin/users/:id','Path param','No','Dev Lead','In Progress'],
+          ['SAST-003','SAST','Checkmarx','payment-service','release/v2.1','Insecure Deserialization','Medium','PaymentProcessor.java','Line 89','Yes – library call','—','False Positive'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 11, statusMap:{'Confirmed – fix in dev':'s-medium','Fixed + secret rotated':'s-low','In Progress':'s-medium','False Positive':'s-closed'}
+      },
+      {
+        id: 'app-dep', name: 'Software Dependency Risk Log',
+        desc: 'Track third-party library and dependency vulnerabilities across your software supply chain.',
+        cols: ['Dep ID','Package Name','Ecosystem','Current Version','CVE ID','Severity','CVSS','Fixed Version','Applications Using','Risk Context','Action Required','Status'],
+        rows: [
+          ['DEP-001','log4j-core','Maven/Java','2.14.1','CVE-2021-44228','Critical','10.0','2.17.1','Legacy reporting service','Remote code exec via JNDI','Upgrade immediately','Remediated – 2022'],
+          ['DEP-002','lodash','npm','4.17.20','CVE-2021-23337','High','7.2','4.17.21','customer-portal, admin-dashboard','Prototype pollution via merge','Upgrade to 4.17.21','Remediated'],
+          ['DEP-003','express','npm','4.18.1','CVE-2024-XXXXX','Medium','5.5','4.18.3','All Node.js services','Open redirect vulnerability','Upgrade in next sprint','In Progress'],
+          ['DEP-004','jackson-databind','Maven/Java','2.13.2','CVE-2022-42003','High','7.5','2.14.0','payment-service','Uncontrolled resource consumption','Upgrade by end of Q2','Scheduled'],
+          ['DEP-005','requests','pip/Python','2.27.1','CVE-2023-32681','Medium','6.1','2.31.0','data-pipeline service','Header injection risk','Upgrade with next deploy','In Progress'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 11, statusMap:{Remediated:'s-low','Remediated – 2022':'s-low','In Progress':'s-medium',Scheduled:'s-medium','Not Started':'s-high'}
+      },
+      {
+        id: 'app-pentest', name: 'Penetration Test Results Tracker',
+        desc: 'Track penetration testing engagements, findings, and remediation progress.',
+        cols: ['Finding ID','Pen Test Name','Test Date','Tester/Firm','Scope','Finding Title','Severity','Affected Component','Risk Description','Remediation','Owner','Status'],
+        rows: [
+          ['PT-001','Customer Portal External Pen Test','2025-03-01','CyberSafe Ltd','customer-portal.corp.com','SQL Injection – Search API','Critical','/api/search','Attacker can extract full DB','Parameterise all SQL queries','AppSec + Dev','In Remediation'],
+          ['PT-002','Customer Portal External Pen Test','2025-03-01','CyberSafe Ltd','customer-portal.corp.com','Broken Access Control – IDOR','High','/api/admin/users/:id','Access other users data by ID manipulation','Enforce object-level authorisation','Dev Team','In Remediation'],
+          ['PT-003','Internal Network Pen Test','2025-02-15','Internal Red Team','Corporate LAN 10.0.0.0/8','Kerberoasting attack vector','High','Active Directory','Weak SPN passwords crackable offline','Strong passwords on service accounts + PAM','IT Sec','Remediated'],
+          ['PT-004','Internal Network Pen Test','2025-02-15','Internal Red Team','Corporate LAN 10.0.0.0/8','LLMNR/NBT-NS Poisoning','Medium','Windows clients','Credential interception on segment','Disable LLMNR + NBT-NS via GPO','IT Ops','Remediated'],
+          ['PT-005','AWS Cloud Config Review','2025-04-01','CloudSec Firm','AWS Production','S3 public ACL on dev bucket','High','S3: dev-data-backup','Public read access to dev data backup','Block all public access','CloudOps','Remediated'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 11, statusMap:{Remediated:'s-low','In Remediation':'s-medium','Risk Accepted':'s-closed','Not Started':'s-high'}
+      },
+      {
+        id: 'app-review', name: 'Secure Code Review Checklist',
+        desc: 'Structured secure code review checklist covering OWASP Top 10 and secure development practices.',
+        cols: ['Check #','Category','Check Description','OWASP Ref','Reviewer','Result','Severity if Fail','Finding Detail','Recommendation','Fixed?','PR/Commit','Notes'],
+        rows: [
+          ['CR-001','Input Validation','All user inputs validated and sanitised server-side','A03 Injection','AppSec Eng','Fail','Critical','Search endpoint accepts raw SQL fragment','Use parameterised queries / ORM','In Progress','PR #442','VULN-001 linked'],
+          ['CR-002','Authentication','Passwords hashed with bcrypt/argon2 (not MD5/SHA1)','A07 Auth Failures','AppSec Eng','Pass','High','bcrypt rounds=12 confirmed','—','N/A','—','Compliant'],
+          ['CR-003','Access Control','All endpoints enforce authorisation checks','A01 Broken AC','AppSec Eng','Fail','High','Admin user endpoint lacks ownership check','Add object-level auth check','In Progress','PR #456','VULN-002 linked'],
+          ['CR-004','Secrets Management','No hardcoded secrets in source code','A02 Cryptographic','Dev Lead','Pass','High','Secrets manager used for all credentials','—','N/A','Commit c3f9b21','Automated check in CI'],
+          ['CR-005','Error Handling','No stack traces or sensitive data in error responses','A05 Sec Misc','AppSec Eng','Fail','Medium','Debug mode returns full stack trace in prod','Disable debug mode in production config','Fixed','PR #448','Fixed in staging'],
+          ['CR-006','Dependencies','No known vulnerable libraries in use','A06 Components','AppSec Eng','Fail','Medium','express 4.18.1 with known CVE','Upgrade to 4.18.3','In Progress','—','DEP-003 linked'],
+        ],
+        statusCol: 5, statusMap:{Pass:'s-low',Fail:'s-high','N/A':'s-medium'}
+      }
+    ]
+  },
+  {
+    id: 'vuln', icon: '🔍', title: 'Vulnerability Management',
+    badge: 'Dashboard + 5 tmpl',
+    templates: [
+      {
+        id: 'vm-score', name: 'Vulnerability Risk Scoring Matrix',
+        desc: 'Score and prioritize vulnerabilities using CVSS, business context, and exploitability.',
+        cols: ['Vuln ID','CVE ID','Affected Asset','CVSS Base','Exploit Available?','Asset Criticality','Exposure','Business Risk Score','Patch Available?','Priority','Owner','SLA Target'],
+        rows: [
+          ['VRM-001','CVE-2024-1234','prod-web-01','9.8','Yes (public PoC)','Critical','Internet-facing','Critical (98)','Yes','Immediate','SecOps','24 hours'],
+          ['VRM-002','CVE-2024-5678','internal-db-02','7.5','No','High','Internal only','High (62)','Yes','High','IT Ops','7 days'],
+          ['VRM-003','CVE-2023-9999','dev-workstation-05','6.1','Yes','Low','Dev network','Medium (38)','Yes','Medium','Dev Lead','30 days'],
+          ['VRM-004','CVE-2024-2345','edge-fw-01','8.1','No','Critical','Internet-facing','High (70)','No – awaiting vendor','High','NetOps','Monitor until patch'],
+          ['VRM-005','CVE-2022-1111','old-app-server','5.0','No','Medium','Internal','Low (22)','Yes','Low','IT Ops','90 days'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 9, statusMap:{Immediate:'s-critical','Critical (98)':'s-critical',High:'s-high',Medium:'s-medium',Low:'s-low'}
+      },
+      {
+        id: 'vm-patch', name: 'Patch Prioritization Tracker',
+        desc: 'Manage patch deployment with risk-based prioritization, owner assignment, and SLA tracking.',
+        cols: ['Patch ID','CVE(s)','Affected Systems','Severity','Patch/Update','Source','Patch Available Date','SLA Deadline','Deployment Status','Tested?','Deployed By','Completion Date'],
+        rows: [
+          ['PAT-001','CVE-2024-1234','prod-web-01, prod-web-02','Critical','Apache 2.4.59','Apache Foundation','2025-04-01','2025-04-02','Deployed','Yes','IT Ops','2025-04-02'],
+          ['PAT-002','CVE-2024-5678','internal-db-02, internal-db-03','High','PostgreSQL 16.2','PostgreSQL','2025-03-25','2025-04-01','Deployed','Yes','DBA Team','2025-03-31'],
+          ['PAT-003','CVE-2024-2345','edge-fw-01','High','PAN-OS 11.1.3','Palo Alto (PSIRT)','TBD – not yet','Monitor','Pending','No','—','—'],
+          ['PAT-004','CVE-2023-9999','40 workstations','Medium','Windows KB5034441','Microsoft','2025-03-12','2025-04-12','In Progress – 28/40 done','Yes','IT Ops','—'],
+          ['PAT-005','CVE-2022-1111','old-app-server','Low','App vendor v4.1.2','Vendor','2024-12-01','2025-03-01','Overdue','No','—','—'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 8, statusMap:{Deployed:'s-low','In Progress – 28/40 done':'s-medium',Pending:'s-medium',Overdue:'s-high'}
+      },
+      {
+        id: 'vm-cve', name: 'CVE Monitoring Log',
+        desc: 'Track newly published CVEs relevant to your environment with triage and response status.',
+        cols: ['Log ID','CVE ID','Published Date','Vulnerability','Affected Product','CVSS','In Environment?','Exploited in Wild?','Vendor Advisory','Action Taken','Assigned To','Status'],
+        rows: [
+          ['CVE-LOG-001','CVE-2024-3400','2024-04-12','OS Command Injection in GlobalProtect','PAN-OS < 11.1.2-h3','10.0','Yes – 2 FW nodes','Yes – CISA KEV','PAN-SA-2024-0003','Emergency patch applied','NetOps','Remediated'],
+          ['CVE-LOG-002','CVE-2024-1086','2024-01-31','Use-after-free in Linux netfilter','Linux kernel < 6.3','7.8','Yes – Ubuntu servers','Yes','Ubuntu USN-6725','Kernel update scheduled','IT Ops','In Progress'],
+          ['CVE-LOG-003','CVE-2024-27282','2024-04-23','Buffer overread in YAML (Ruby)','Ruby < 3.3.1','5.3','Possibly – checking','No','Ruby advisory','Dependency audit running','AppSec','Under Review'],
+          ['CVE-LOG-004','CVE-2023-46604','2023-10-27','RCE in Apache ActiveMQ','ActiveMQ < 5.15.16','10.0','No – not in env','Yes','Apache advisory','Confirmed not in scope','SecOps','No Action Needed'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 11, statusMap:{Remediated:'s-low','In Progress':'s-medium','Under Review':'s-medium','No Action Needed':'s-closed'}
+      },
+      {
+        id: 'vm-sla', name: 'Remediation SLA Tracker',
+        desc: 'Monitor vulnerability remediation against defined SLAs by severity tier.',
+        cols: ['SLA Tier','Severity','SLA Target (days)','Open Vulns','On Track','Breached','Avg Days Open','Oldest Open (days)','This Month Closed','SLA Compliance %','Trend','Notes'],
+        rows: [
+          ['T1','Critical','1 day (emergency)','3','2','1','1.8','3','5','67%','↓ Declining','1 CVE missed 24hr SLA – FW patch dependency'],
+          ['T2','High','7 days','12','10','2','5.2','9','18','83%','→ Stable','2 pending vendor patches'],
+          ['T3','Medium','30 days','34','32','2','18.4','38','22','94%','↑ Improving','Strong quarter'],
+          ['T4','Low','90 days','67','65','2','42.1','94','41','97%','→ Stable','Good overall compliance'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 9, statusMap:{'67%':'s-high','83%':'s-medium','94%':'s-low','97%':'s-low'}
+      },
+      {
+        id: 'vm-scan', name: 'Vulnerability Scan Schedule & Results',
+        desc: 'Manage scan schedules, coverage, and results summaries across your asset estate.',
+        cols: ['Scan ID','Scan Name','Scanner','Scope','Scan Type','Scheduled Frequency','Last Scan Date','Next Scan','Critical Found','High Found','Coverage %','Status'],
+        rows: [
+          ['SCN-001','External ASM Scan','Tenable.io','Internet-facing assets','External','Weekly','2025-04-15','2025-04-22','2','8','100%','Active'],
+          ['SCN-002','Internal Network Full Scan','Tenable.sc','10.0.0.0/8','Internal','Monthly','2025-04-01','2025-05-01','5','23','94%','Active'],
+          ['SCN-003','Web App Scan – Production','Tenable Web App','prod-*.corp.com','DAST','Bi-weekly','2025-04-10','2025-04-24','1','12','100%','Active'],
+          ['SCN-004','Cloud Config Scan – AWS','Prowler','AWS Production','CSPM','Weekly','2025-04-16','2025-04-23','0','4','100%','Active'],
+          ['SCN-005','Dev Environment Scan','Tenable.io','10.5.0.0/16','Internal','Monthly','2025-03-01','2025-04-01','0','7','88%','Overdue'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 11, statusMap:{Active:'s-low',Overdue:'s-high',Paused:'s-medium'}
+      }
+    ]
+  },
+  {
+    id: 'secmgmt', icon: '📁', title: 'Security Management Docs',
+    badge: '27 document files',
+    templates: [
+      {
+        id: 'sm-tracker', name: 'Security Management Master Tracker',
+        desc: 'High-level tracker for all security management activities, policies, and program initiatives.',
+        cols: ['Item ID','Category','Title','Priority','Owner','Status','Due Date','% Complete','Dependencies','Last Updated','Notes','Links'],
+        rows: [
+          ['SM-001','Policy','Update Information Security Policy for 2025','High','CISO','In Progress','2025-05-01','70%','Legal review pending','2025-04-10','Annual review cycle','Policy doc linked'],
+          ['SM-002','Training','Security Awareness Program – Q2 2025','High','HR + SecOps','Complete','2025-03-31','100%','None','2025-03-31','97% staff completion','LMS report linked'],
+          ['SM-003','Audit','SOC 2 Type II Annual Audit','Critical','CISO + Compliance','In Progress','2025-06-30','45%','Evidence collection','2025-04-15','Auditor: Deloitte','Evidence tracker linked'],
+          ['SM-004','Program','Zero Trust Architecture rollout','Critical','IT Security','In Progress','2025-12-31','30%','Network redesign','2025-04-01','Phase 1: Identity complete','Project plan linked'],
+          ['SM-005','Risk','Annual Risk Assessment','High','Risk Manager','Open','2025-07-01','0%','None','—','Scheduled Q3','Risk register linked'],
+          ['SM-006','Vendor','Vendor Security Review Program','Medium','Third Party Risk','In Progress','2025-09-30','55%','Vendor cooperation','2025-04-05','15/27 vendors reviewed','VRM tracker linked'],
+        ],
+        statusCol: 4, statusMap:{Complete:'s-low','In Progress':'s-medium',Open:'s-high',Blocked:'s-critical'}
+      },
+      {
+        id: 'sm-incident', name: 'Incident Management Log',
+        desc: 'Master incident management register tracking all security incidents across severity levels.',
+        cols: ['Incident ID','Date Opened','Type','Title','Severity','Affected Systems','Assigned Team','Status','SLA Breach?','Date Closed','Total Duration','PIR Required?'],
+        rows: [
+          ['IM-2025-001','2025-01-15','Malware','Emotet infection – Finance laptop','High','1 laptop, email','SOC L2','Closed','No','2025-01-17','38hrs','No'],
+          ['IM-2025-002','2025-02-10','Data Breach','Phishing-led email exposure','High','Email system','SOC L2 + DPO','Closed','No','2025-02-15','5 days','Yes'],
+          ['IM-2025-003','2025-03-05','Misconfiguration','S3 public access – customer data','Critical','AWS S3','CloudOps + SecOps','Closed','No','2025-03-06','18hrs','Yes'],
+          ['IM-2025-004','2025-04-16','Active Threat','Webshell on production web server','Critical','Web servers (2)','SOC L3 + IR Team','Active','Monitoring','—','Ongoing','Yes – post incident'],
+          ['','','','','','','','','','','',''],
+        ],
+        statusCol: 6, statusMap:{Closed:'s-low',Active:'s-high','Under Investigation':'s-medium'}
+      }
+    ]
+  }
+];
+
+// ─────────────────────────────────────────────
+// RENDER DOMAINS
+// ─────────────────────────────────────────────
+function renderDomains() {
+  const grid = document.getElementById('domain-grid');
+  grid.innerHTML = DOMAINS.map(domain => `
+    <div class="domain-card">
+      <div class="dc-head">
+        <div class="dc-icon">${domain.icon}</div>
+        <div class="dc-title">${domain.title}</div>
+        <div class="dc-badge">${domain.badge}</div>
+      </div>
+      <div class="dc-body">
+        <div class="dc-sub">Templates</div>
+        ${domain.templates.map(t => `
+          <button class="template-btn" onclick="openTemplate('${t.id}')">
+            <span class="tb-arrow">→</span>
+            <span class="tb-name">${t.name}</span>
+            <span class="tb-open">Open</span>
+          </button>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+// ─────────────────────────────────────────────
+// TEMPLATE MODAL
+// ─────────────────────────────────────────────
+function findTemplate(id) {
+  for (const d of DOMAINS) {
+    const t = d.templates.find(t => t.id === id);
+    if (t) return { template: t, domain: d };
+  }
+  return null;
+}
+
+async function openTemplate(id) {
+  const found = findTemplate(id);
+  if (!found) return;
+  const { template, domain } = found;
+  currentTemplate = template;
+  currentTemplateId = id;
+
+  document.getElementById('tpl-domain-badge').textContent = domain.title;
+  document.getElementById('tpl-title').textContent = template.name;
+  document.getElementById('tpl-desc').textContent = template.desc;
+  buildSheet(template, null);
+  document.getElementById('tpl-overlay').classList.remove('hide');
+  document.body.style.overflow = 'hidden';
+}
+
+function buildSheet(template, savedRows) {
+  const rows = savedRows || template.rows.map(r => [...r]);
+  const tbl = document.getElementById('tpl-table');
+  const statusMap = template.statusMap || {};
+  const statusCol = template.statusCol;
+
+  tbl.innerHTML = `
+    <thead><tr>
+      <th style="min-width:36px">#</th>
+      ${template.cols.map(c => `<th>${c}</th>`).join('')}
+    </tr></thead>
+    <tbody>
+      ${rows.map((row, ri) => `
+        <tr>
+          <td class="row-num">${ri + 1}</td>
+          ${template.cols.map((col, ci) => {
+            const val = row[ci] || '';
+            const isStatus = ci === statusCol;
+            const cls = isStatus ? (statusMap[val] || '') : '';
+            // Select for status columns
+            if (isStatus && Object.keys(statusMap).length > 0) {
+              const opts = Object.keys(statusMap).map(k => `<option value="${k}" ${k === val ? 'selected' : ''}>${k}</option>`).join('');
+              return `<td><select onchange="updateCell(${ri},${ci},this.value)">${opts}<option value="${val}" ${!statusMap[val] ? 'selected' : ''}>${val}</option></select></td>`;
+            }
+            return `<td><input type="text" value="${val.replace(/"/g, '&quot;')}" onchange="updateCell(${ri},${ci},this.value)" placeholder="${col}..."></td>`;
+          }).join('')}
+        </tr>
+      `).join('')}
+    </tbody>
+  `;
+}
+
+function updateCell(row, col, val) {
+  // reflect in current template rows for save
+  if (!currentTemplate._editRows) currentTemplate._editRows = currentTemplate.rows.map(r => [...r]);
+  currentTemplate._editRows[row][col] = val;
+}
+
+function getCurrentRows() {
+  const tbl = document.getElementById('tpl-table');
+  const rows = [];
+  tbl.querySelectorAll('tbody tr').forEach(tr => {
+    const cells = tr.querySelectorAll('td:not(.row-num)');
+    rows.push(Array.from(cells).map(td => {
+      const inp = td.querySelector('input');
+      const sel = td.querySelector('select');
+      return inp ? inp.value : sel ? sel.value : '';
+    }));
+  });
+  return rows;
+}
+
+}
+
+function exportCSV() {
+  if (!currentTemplate) return;
+  const rows = getCurrentRows();
+  const header = currentTemplate.cols.join(',');
+  const body = rows.map(r => r.map(c => `"${(c||'').replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob = new Blob([header + '\n' + body], { type: 'text/csv' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = `${currentTemplate.name.replace(/[^a-z0-9]/gi,'_')}.csv`; a.click();
+  showToast('CSV exported ✓', 'success');
+}
+
+function closeTemplate() {
+  document.getElementById('tpl-overlay').classList.add('hide');
+  document.body.style.overflow = '';
+  currentTemplate = null; currentTemplateId = null;
+}
+
+// ─────────────────────────────────────────────
+// PAGE NAV
+// ─────────────────────────────────────────────
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(`page-${name}`).classList.add('active');
+  window.scrollTo(0, 0);
+
+}
+
+// ─────────────────────────────────────────────
+// API HELPER
+// ─────────────────────────────────────────────
+async function apiFetch(path, method = 'GET', body = null) {
+  const token = localStorage.getItem('cst_token');
+  const opts = {
+    method,
+    headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+    ...(body ? { body: JSON.stringify(body) } : {}),
+  };
+  const res = await fetch(API + path, opts);
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Request failed');
+  return data;
+}
+
+// ─────────────────────────────────────────────
+// TOAST
+// ─────────────────────────────────────────────
+function showToast(msg, type = 'success') {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.className = `toast show ${type}`;
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove('show'), 3200);
+}
+
+// ─────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────
+renderDomains();
+
+// Close modals on overlay click
+document.getElementById('tpl-overlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeTemplate(); });
+// ESC key
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeTemplate(); closeAuth(); } });
+</script>
+
+<!-- FOOTER -->
+<footer style="border-top:1px solid var(--border);padding:32px 0;margin-top:48px;position:relative;z-index:1">
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+    <div>
+      <div style="font-family:var(--mono);font-size:13px;color:var(--text);margin-bottom:4px">Built by <strong style="color:var(--cyan)">Jaswanth K L</strong></div>
+      <div style="font-family:var(--mono);font-size:11px;color:var(--dim)">Cybersecurity professional · Open-source toolkit · Free forever</div>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+      <a href="https://github.com/jaswanthkl/cybersec-toolkit" target="_blank" style="font-family:var(--mono);font-size:11px;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:7px 14px;display:flex;align-items:center;gap:7px;transition:all .2s" onmouseover="this.style.borderColor=&apos;var(--cyan)&apos;;this.style.color=&apos;var(--cyan)&apos;" onmouseout="this.style.borderColor=&apos;var(--border)&apos;;this.style.color=&apos;var(--muted)&apos;">
+        <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/jaswanthkl" target="_blank" style="font-family:var(--mono);font-size:11px;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:7px 14px;display:flex;align-items:center;gap:7px;transition:all .2s" onmouseover="this.style.borderColor=&apos;var(--cyan)&apos;;this.style.color=&apos;var(--cyan)&apos;" onmouseout="this.style.borderColor=&apos;var(--border)&apos;;this.style.color=&apos;var(--muted)&apos;">
+        <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <span style="font-family:var(--mono);font-size:10px;color:var(--dim)">MIT License · Open Source</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
