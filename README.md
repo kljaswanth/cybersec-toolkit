@@ -207,7 +207,7 @@ MIT License — free to use, modify, and distribute. See [LICENSE](LICENSE) for 
 **Jaswanth K L**
 Cybersecurity professional passionate about making security operations more accessible.
 
-- 🔗 LinkedIn: [linkedin.com/in/jaswanthkl](https://www.linkedin.com/in/jaswanthkl)
+- 🔗 LinkedIn: [linkedin.com/in/jaswanthkl](https://www.linkedin.com/in/jaswanth-cybersec)
 - 💻 GitHub: [github.com/jaswanthkl](https://github.com/jaswanthkl)
 
 ---
